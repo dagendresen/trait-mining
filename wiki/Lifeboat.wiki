@@ -1,7 +1,7 @@
 #summary Lifeboat to the gene pool
-#labels Phase-Requirements
+#labels Phase-Requirements,Lifeboat
 
-= Introduction =
+= Lifeboat to the Gene Pool =
 
 PhD thesis -
 Dag Terje Filip Endresen (2011).
