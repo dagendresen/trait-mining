@@ -1,5 +1,5 @@
 #summary Lifeboat to the gene pool
-#labels Phase-Requirements,Lifeboat
+#labels Phase-Requirements,Lifeboat,Featured
 
 = Lifeboat to the Gene Pool =
 
