@@ -1,0 +1,18 @@
+#summary Lifeboat to the gene pool
+#labels Phase-Requirements
+
+= Introduction =
+
+PhD thesis
+Utilization of Plant Genetic Resources: A Lifeboat to the Gene Pool
+Dag Terje Filip Endresen
+Copenhagen University, Faculty for Life Sciences, Department of Agriculture and Ecology
+ISBN: 978-91-628-8268-6
+
+Submitted: 9 February
+Dissertation: 31 March 2011
+
+
+= Details =
+
+The MATLAB code for the trait mining experiments included in the thesis are made available form this Google Code project.
