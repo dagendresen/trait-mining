@@ -1,0 +1,21 @@
+#summary Trait Mining Toolbox for MATLAB
+#labels Featured,Phase-Implementation
+
+= MATLAB toolbox =
+
+The trait mining algorithms are implemented as the following MATLAB scripts. Available online at: http://goo.gl/i52HL (this code repository). Blog post to introduce this toolbox: http://goo.gl/FrRnP (WordPress). There are plans to migrate these algorithms also to R. 
+
+ * dso_info.m ([http://code.google.com/p/trait-mining/source/browse/trunk/matlab/trait-mining-0.1/dso_info.m source])
+ * pred2kappa.m ([http://code.google.com/p/trait-mining/source/browse/trunk/matlab/trait-mining-0.1/pred2kappa.m source])
+ * kappa_less.m ([http://code.google.com/p/trait-mining/source/browse/trunk/matlab/trait-mining-0.1/kappa_less.m source])
+ * tm_simca.m ([http://code.google.com/p/trait-mining/source/browse/trunk/matlab/trait-mining-0.1/tm_simca.m source])
+ * tm_simca_loop.m ([http://code.google.com/p/trait-mining/source/browse/trunk/matlab/trait-mining-0.1/tm_simca_loop.m source])
+ * tm_plsda.m ([http://code.google.com/p/trait-mining/source/browse/trunk/matlab/trait-mining-0.1/tm_plsda.m source])
+ * tm_pre_study.m ([http://code.google.com/p/trait-mining/source/browse/trunk/matlab/trait-mining-0.1/tm_pre_study.m source])
+
+----
+
+These Trait Mining scripts were developed for the PhD thesis of Dag Endresen (2011) Utilization of Plant Genetic Resources.
+ * http://goo.gl/Zl2mM (WordPress Blog post)
+ * http://goo.gl/Q1NRi (PDF, pre-defence version)
+ * http://goo.gl/poMqA (Dissertation Slides, SlideShare)
