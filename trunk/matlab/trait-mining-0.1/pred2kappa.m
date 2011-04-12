@@ -10,7 +10,7 @@ function [k, po, k2, po2, pa, ppv, spec, sens, tp, fp, fn, tn] = pred2kappa(pred
 %     pred - array of actual, and predicted_class: [a p; a p; ...; a p]
 %
 %     From the classification models, the predicted class is extracted,
-%     and combined as the second column together with the actaul class.
+%     and combined as the second column together with the actual class.
 %     This new array has the samples down as rows and two columns.
 %
 %   OUTPUT:

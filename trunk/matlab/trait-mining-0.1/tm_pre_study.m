@@ -1,6 +1,6 @@
 function tm_pre_study(Xcal, Xtest)
 % ** PRE-study ** 
-% This function calibrate different classification and discrimination
+% This function calibrates different classification and discrimination
 % models and displays the results on screen
 %
 % Syntax: 	tm_pre_study(Xcal, Xtest)
