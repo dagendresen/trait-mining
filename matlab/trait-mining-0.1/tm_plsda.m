@@ -7,7 +7,7 @@ function [k,po,k2,po2,pa,ppv,spec,sens,tp,fp,fn,tn] = tm_plsda(Xcal, Xtest, lv)
 %   INPUT:
 %     Xcal - Calibration set (DSO)
 %     Xtest - Test set (DSO)
-%     lv - number of latent varables for the calibration (scalar)
+%     lv - number of latent variables for the calibration (scalar)
 %
 %   OUTPUT:   Displays on the screen a summary of the classification
 %   Example:  tm_plsda(Xcal, Xtest, [4 4]);
