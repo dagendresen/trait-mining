@@ -3,7 +3,8 @@
 #########################################################
 
 # Demo example for predictive modeling of crop traits with environment layers.
-# Script updated 21 December by Dag Endresen.
+# http://trait-mining.googlecode.com/svn/trunk/R/stem_rust_example.R
+# Script last updated 21 December by Dag Endresen.
 # Contact email: dag.endresen@gmail.com
 # Creative Commons Attribution 3.0 (CC-by)
 # http://creativecommons.org/licenses/by/3.0/
