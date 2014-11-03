@@ -1,12 +1,15 @@
 #########################################################
+## Predictive characterization of CWR and landraces    ##
 ## Focused Identification of Germplasm Strategy (FIGS) ##
 #########################################################
 
 # Demo example for predictive modeling of crop traits with environment layers.
 # http://trait-mining.googlecode.com/svn/trunk/R/stem_rust_example.R
-# Script last updated 21 December by Dag Endresen.
+
+# This script was initiated at the PGR Secure workshop in Madrid, 10 January 2012.
+# Script last updated 3 November 2014 by Dag Endresen.
 # Contact email: dag.endresen@gmail.com
-# Creative Commons Attribution 3.0 (CC-by)
+# Creative Commons Attribution 3.0 (CC-BY)
 # http://creativecommons.org/licenses/by/3.0/
 
 # This demo example uses a stem rust trait set available from USDA GRIN
@@ -15,6 +18,13 @@
 # This is the same data set as explored by Endresen et al. (2011)
 # http://dx.doi.org/doi:10.2135/cropsci2010.12.0717
 
+# Included in a Bioversity technical guidelines, November 2014:
+# Citation: Thormann I, Parra-Quijano M, Endresen DTF,  Rubio-Teso ML, 
+#  Iriondo MJ, and Maxted N (2014). Predictive characterization of crop 
+#  wild relatives and landraces. Technical guidelines version 1. 
+#  Bioversity International, Rome, Italy. ISBN 978-92-9255-004-2.
+
+
 
 #############################################
 ## Set working directory and read packages ##
@@ -22,14 +32,17 @@
 
 # Choose a directory to be your R workspace.
 #setwd("C:/workspace/PGRSecure") # Example for a Windows PC
-setwd("/Users/dag/workspace/r/pgrsecure")
+setwd("/Users/dag/workspace/r/pgrsecure") # Example for a bash shell (Linux, Mac)
 
 # Note: Make sure you have installed these packages.
-#install-packages("randomForest", "maps")
+#install-packages(c("randomForest", "maps", "mapdata"))
+#install-packages(c("raster", "dismo", "rgbif"))
 
-require(maps) # we will use this R-package to plot a world map
 require(randomForest) # random forest algorithm
-#library(raster) # spatial raster data management
+library(maps) # we will use this R-package to plot a world map
+library(mapdata) # we will use this R-package to plot a world map
+#library(rgbif) # downloading occurrence records from GBIF
+#library(raster) # spatial raster data management (and downloading WorldClim environment)
 #library(dismo) # species distribution modeling tools
 
 
@@ -86,7 +99,7 @@ Xtest <- Xbio[3446:6890,] # test set - to validate model performance
 
 # Calibrate model using the training set.
 rf <- randomForest(as.factor(s3) ~ ., data=Xcal, ntr=50)
-plot(rf) # preview model
+plot(rf) # preview of the model
 
 # Read the confusion table from the model object.
 conf <- rf$confusion
@@ -108,6 +121,7 @@ LRpos_cal <- (TP/(TP + FN)/(FP/(FP+TN))) # positive diagnostic likelihood ratio
 ## Prediction based on model ##
 ###############################
 
+# Predict scores for the test set
 prediction <- predict(rf, Xtest) # pkg stats, randomForest
 plot(prediction) # preview classification results
 hist(Xtest$s3) # preview classification histogram
@@ -154,17 +168,32 @@ PA_test <- (2*TP)/(2*TP+FP+FN) # proportion of observed positive agreement
 #####################################################
 
 # Final step: predictions for accessions with unknown trait scores.
-# Extract the same environmental layers for these accessions.
-#Xpred <- your_new_data_set_here
+# Extract the exact same environmental layers for these accessions.
+# Note, exact same environment columns as used for the training set.
+#Xpred <- your_new_prediction_data_set_here
 
-# You might want to prepare a model including ALL the records (with trait information).
+# You might first want to prepare a new model including ALL the records in the stem rust demo set.
+# ... all the data records that you have access to with trait information.
 #rf <- randomForest(as.factor(s3) ~ ., data=Xbio, ntr=50)
 
-# Predict scores for the new set.
-#prediction <- predict(rf, Xpred) # pkg stats
 
-#table(prediction) # summary of how many were predicted to each class
+# The example below will use the 19 BioClim variables
 
-# Note that the observed/measured trait scores are not available here, and
-# prediction metrics can thus not be calculated (before field trials are made).
+# Tab-delimited pred_accessions input with columns "longitude" and "latitude" 
+pred <- read.delim("./YOUR_PATH/pred_accessions.txt", header=TRUE, dec=".") 
+xy_pred <- pred[c("longitude","latitude")]
+
+# WorldClim, http://www.worldclim.org/ (See also CODE BOX 4.1)
+env <- getData('worldclim', var='bio', res=10)
+Xpred <- extract(env, xy_pred); # extract environment to points (pkg raster)
+
+# Predict scores for the new set
+prediction <- predict(rf, Xpred) # pkg stats
+
+table(prediction) # how many predicted to each class
+
+# Note that the real measured trait scores are not available here, and prediction
+# metrics can thus not be calculated (before after the final field trials are made).
+
+
 
