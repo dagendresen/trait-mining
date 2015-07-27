@@ -1,4 +1,4 @@
-# trait-mining
+# Trait-mining toolbox
 
 ## Introduction
 The genebank collections worldwide provide the genetic diversity required for plant breeding activities. 
